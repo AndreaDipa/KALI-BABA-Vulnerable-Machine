@@ -6,6 +6,9 @@ const app = express()
 const path = require('path')
 const Joi = require('joi')
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto")
+const hash = crypto.createHash('sha512')
+
 const cookieParser = require('cookie-parser')
 const passwordComplexity = require('joi-password-complexity')
 app.disable('x-powered-by')
@@ -35,7 +38,7 @@ function validateUser(user) {
   const schema = Joi.object({
       username: Joi.string().min(5).max(30).required(),
       email: Joi.string().min(5).max(30).required().email(),
-      password: passwordComplexity().required()
+      password: Joi.required()
   });
 
   return schema.validate(user);
@@ -90,28 +93,33 @@ app.post("/register", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message)
   const user = await pool.query('SELECT users.username FROM users WHERE users.username = $1', [req.body.username])
   if (user.rowCount > 0) res.status(400).send("username already exists")
-  
+  const hash = crypto.createHash('sha512')
+  data = hash.update(req.body.password, 'utf-8')
+  password = data.digest('hex')
   const result = await pool.query('INSERT INTO users(username, email, password) VALUES ($1, $2, $3)',
-    [req.body.username, req.body.email, req.body.password])
+    [req.body.username, req.body.email, password])
   
-  token = generateAuthToken(req.body.username, false)
-  res.cookie('auth', token, {httpOnly: true}).render("index")
+  res.render("login")
 
 })
 
-app.post("/login", (req, res) => {
-  
+app.post("/login", async (req, res) => {
+  const hash = crypto.createHash('sha512')
+  data = hash.update(req.body.password, 'utf-8')
+  password = data.digest('hex')
+  const user = await pool.query("SELECT * FROM users WHERE users.username = '" + req.body.username + "' AND users.password = '" + password +"';")
+ 
+  if (user.rowCount == 0) res.send('invalid username or password')
+
+  token = generateAuthToken(req.body.username, user.rows[0].is_admin)
+  console.log(user.rows[0].is_admin)
+  if (user.rows[0].is_admin == false)
+    res.cookie('auth', token, {httpOnly: true}).render('index')
+  else
+    res.cookie('auth', token, {httpOnly: true}).render('upload', {username: user.rows[0].username})
 })
 
-app.get("/user", (req, res) => {
 
-  pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
-      if (error) {
-        throw error
-      }
-        res.status(200).json(results.rows)
-    })
-})
 
 app.listen(5000, '127.0.0.1', () => {
     console.log("app listening on port 5000")
