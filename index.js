@@ -58,7 +58,8 @@ const pool = new Pool({
 });
 
 app.get("/", (req, res) => {
-  res.render("index");
+  
+  res.render("index", {cookie: req.cookies['auth']});
 });
 
 app.get("/upload", auth, (req, res) => {
@@ -135,7 +136,9 @@ app.post("/login", async (req, res) => {
     res.status(500).send("internal server error");
   }
 });
-
+app.post('/logout', auth, (req, res) => {
+  res.clearCookie("auth").render("index");
+})
 app.listen(5000, "127.0.0.1", () => {
   console.log("app listening on port 5000");
 });
