@@ -107,16 +107,24 @@ app.post("/login", async (req, res) => {
   const hash = crypto.createHash('sha512')
   data = hash.update(req.body.password, 'utf-8')
   password = data.digest('hex')
-  const user = await pool.query("SELECT * FROM users WHERE users.username = '" + req.body.username + "' AND users.password = '" + password +"';")
- 
-  if (user.rowCount == 0) res.send('invalid username or password')
-
-  token = generateAuthToken(req.body.username, user.rows[0].is_admin)
-  console.log(user.rows[0].is_admin)
-  if (user.rows[0].is_admin == false)
-    res.cookie('auth', token, {httpOnly: true}).render('index')
-  else
-    res.cookie('auth', token, {httpOnly: true}).render('upload', {username: user.rows[0].username})
+  let user = {}
+  try {
+    user = await pool.query("SELECT * FROM users WHERE users.username = '" + req.body.username + "' AND users.password = '" + password +"';")
+    console.log(user.rowCount)
+    if (user.rowCount == 0) {
+      res.send('invalid username or password')
+      return
+    }
+    token = generateAuthToken(req.body.username, user.rows[0].is_admin)
+    console.log(user.rows[0].is_admin)
+    if (user.rows[0].is_admin == false)
+      res.cookie('auth', token, {httpOnly: true}).render('index')
+    else
+      res.cookie('auth', token, {httpOnly: true}).render('upload', {username: user.rows[0].username})
+  }
+  catch(e) {
+    res.status(500).send('internal server error')
+  }
 })
 
 
