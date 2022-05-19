@@ -8,7 +8,7 @@ const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const hash = crypto.createHash("sha512");
-
+let { exec } = require("child_process")
 const cookieParser = require("cookie-parser");
 const passwordComplexity = require("joi-password-complexity");
 app.disable("x-powered-by");
@@ -18,6 +18,8 @@ app.set("view engine", "ejs");
 app.use(fileupload({ parseNested: true }));
 app.use(express.static(path.join(__dirname, "views")));
 app.use(cookieParser());
+
+
 const { Pool } = require("pg");
 
 function auth(req, res, next) {
@@ -139,6 +141,11 @@ app.post("/login", async (req, res) => {
     res.status(500).send("internal server error");
   }
 });
+
+app.post('/upload', (req, res) => {
+  
+})
+
 app.get('/logout', auth, (req, res) => {
   res.clearCookie("auth").redirect("/");
 })
