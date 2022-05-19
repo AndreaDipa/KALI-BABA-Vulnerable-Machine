@@ -27,15 +27,18 @@
             <a class="nav-link" style="color: #fbf1c7;" href="/about">About us</a>
           </li>
          
-
+          <% if(!cookie) {%>
             <li class="nav-item">
                 <a class="nav-link" style="color: #fbf1c7;" href="/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" style="color: #fbf1c7;" href="/register">Register</a>
             </li>
-          
-          
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #fbf1c7;" href="/logout">Logout</a>
+            </li>
+          <% } %>
           
         </ul>
       </div>

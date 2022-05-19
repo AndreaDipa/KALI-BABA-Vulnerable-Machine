@@ -63,28 +63,31 @@ app.get("/", (req, res) => {
 });
 
 app.get("/upload", auth, (req, res) => {
-  if (req.user.is_admin) res.render("upload", { username: req.user.username });
+  if (req.user.is_admin) { 
+    res.render("upload", { username: req.user.username, cookie: req.cookies['auth'] });
+    return
+  }
   res.send("non sei admin");
 });
 
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", {cookie: req.cookies['auth']});
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact");
+  res.render("contact", {cookie: req.cookies['auth']});
 });
 
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", {cookie: req.cookies['auth']});
 });
 
 app.get("/menu", (req, res) => {
-  res.render("menu");
+  res.render("menu", {cookie: req.cookies['auth']});
 });
 
 app.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register", {cookie: req.cookies['auth']});
 });
 
 app.post("/register", async (req, res) => {
@@ -103,7 +106,7 @@ app.post("/register", async (req, res) => {
     [req.body.username, req.body.email, password]
   );
 
-  res.render("login");
+  res.redirect("/login");
 });
 
 app.post("/login", async (req, res) => {
@@ -127,17 +130,17 @@ app.post("/login", async (req, res) => {
     token = generateAuthToken(req.body.username, user.rows[0].is_admin);
     console.log(user.rows[0].is_admin);
     if (user.rows[0].is_admin == false)
-      res.cookie("auth", token, { httpOnly: true }).render("index");
+      res.cookie("auth", token, { httpOnly: true }).render("index", {cookie: req.cookies['auth']});
     else
       res
         .cookie("auth", token, { httpOnly: true })
-        .render("upload", { username: user.rows[0].username });
+        .redirect("/upload");
   } catch (e) {
     res.status(500).send("internal server error");
   }
 });
-app.post('/logout', auth, (req, res) => {
-  res.clearCookie("auth").render("index");
+app.get('/logout', auth, (req, res) => {
+  res.clearCookie("auth").redirect("/");
 })
 app.listen(5000, "127.0.0.1", () => {
   console.log("app listening on port 5000");
