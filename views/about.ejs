@@ -10,10 +10,108 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <link
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <%- include('./navbar.ejs') %>
+
+    <div class="container-fluid">
+      <div class="row text-center justify-content-center mb-5">
+        <div class="col-xl-6 col-lg-8">
+          <h1 class="font-weight-bold">Our Journey</h1>
+          <p class="text-muted">
+            We’re very proud of the path we’ve taken. Explore the history that
+            made us the company we are today.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+            <div class="timeline-step">
+              <div
+                class="timeline-content"
+                data-toggle="popover"
+                data-trigger="hover"
+                data-placement="top"
+                title=""
+                data-content="And here's some amazing content. It's very engaging. Right?"
+                data-original-title="2003"
+              >
+                <div class="inner-circle"></div>
+                <p class="h6 mt-3 mb-1">2003</p>
+                <p class="h6 text-muted mb-0 mb-lg-0">Favland Founded</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div
+                class="timeline-content"
+                data-toggle="popover"
+                data-trigger="hover"
+                data-placement="top"
+                title=""
+                data-content="And here's some amazing content. It's very engaging. Right?"
+                data-original-title="2004"
+              >
+                <div class="inner-circle"></div>
+                <p class="h6 mt-3 mb-1">2004</p>
+                <p class="h6 text-muted mb-0 mb-lg-0">Launched Trello</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div
+                class="timeline-content"
+                data-toggle="popover"
+                data-trigger="hover"
+                data-placement="top"
+                title=""
+                data-content="And here's some amazing content. It's very engaging. Right?"
+                data-original-title="2005"
+              >
+                <div class="inner-circle"></div>
+                <p class="h6 mt-3 mb-1">2005</p>
+                <p class="h6 text-muted mb-0 mb-lg-0">Launched Messanger</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div
+                class="timeline-content"
+                data-toggle="popover"
+                data-trigger="hover"
+                data-placement="top"
+                title=""
+                data-content="And here's some amazing content. It's very engaging. Right?"
+                data-original-title="2010"
+              >
+                <div class="inner-circle"></div>
+                <p class="h6 mt-3 mb-1">2010</p>
+                <p class="h6 text-muted mb-0 mb-lg-0">Open New Branch</p>
+              </div>
+            </div>
+            <div class="timeline-step mb-0">
+              <div
+                class="timeline-content"
+                data-toggle="popover"
+                data-trigger="hover"
+                data-placement="top"
+                title=""
+                data-content="And here's some amazing content. It's very engaging. Right?"
+                data-original-title="2020"
+              >
+                <div class="inner-circle"></div>
+                <p class="h6 mt-3 mb-1">2020</p>
+                <p class="h6 text-muted mb-0 mb-lg-0">In Fortune 500</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="container-fluid">
       <div class="row">
@@ -21,9 +119,36 @@
       </div>
       <div class="row center">
         <div class="card" style="width: 18rem">
-          <img src="img/CEO.jpg" class="card-img-top" alt="..." />
+          <img
+            src="img/CEO.jpg"
+            class="card-img-top"
+            alt="..."
+            style="border-radius: 50%; max-width: 80%; margin: 20px"
+          />
           <div class="card-body">
             <h5 class="card-title">ER CEO</h5>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+            </ul>
             <p class="card-text">
               il nostro magnifico CEO colui che ha portato il negozio da zero a
               fatturare come una PMI italiana
@@ -31,9 +156,36 @@
           </div>
         </div>
         <div class="card" style="width: 18rem">
-          <img src="img/luca.jpg" class="card-img-top" alt="..." />
+          <img
+            src="img/luca.jpg"
+            class="card-img-top"
+            alt="..."
+            style="border-radius: 50%; max-width: 80%; margin: 20px"
+          />
           <div class="card-body">
             <h5 class="card-title">Luca</h5>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+            </ul>
             <p class="card-text">
               Grazie a Luca siamo partiti da Bugliano e ora abbiamo dei flagship
               store da Tokyo a Honolulu
@@ -41,9 +193,36 @@
           </div>
         </div>
         <div class="card" style="width: 18rem">
-          <img src="img/Laura.jpg" class="card-img-top" alt="..." />
+          <img
+            src="img/Laura.jpg"
+            class="card-img-top"
+            alt="..."
+            style="border-radius: 50%; max-width: 80%; margin: 20px"
+          />
           <div class="card-body">
             <h5 class="card-title">Laura</h5>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+            </ul>
             <p class="card-text">
               Grazie a Laura il flusso di clienti è diminuito del 20% da inizio
               anno, ma noi le vogliamo bene lo stesso
@@ -51,9 +230,36 @@
           </div>
         </div>
         <div class="card" style="width: 18rem">
-          <img src="img/Andrea.jpg" class="card-img-top" alt="..." />
+          <img
+            src="img/Andrea.jpg"
+            class="card-img-top"
+            alt="..."
+            style="border-radius: 50%; max-width: 80%; margin: 20px"
+          />
           <div class="card-body">
             <h5 class="card-title">Andrea</h5>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+            </ul>
             <p class="card-text">
               Fa degli ottimi kebab, nel tempo libero è appassionato di
               tassidermia
@@ -61,9 +267,36 @@
           </div>
         </div>
         <div class="card" style="width: 18rem">
-          <img src="img/Cosmo.jpg" class="card-img-top" alt="..." />
+          <img
+            src="img/Cosmo.jpg"
+            class="card-img-top"
+            alt="..."
+            style="border-radius: 50%; max-width: 80%; margin: 20px"
+          />
           <div class="card-body">
             <h5 class="card-title">Cosmo</h5>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="social-link"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+            </ul>
             <p class="card-text">
               Non sappiamo che ruolo abbia all'interno del negozio, ma spesso
               entra in cucina dice cazzate e se ne va
@@ -73,15 +306,7 @@
       </div>
     </div>
 
-    <footer class="text-center">
-      <div
-        class="text-center fixed-bottom p-3"
-        style="background-color: black; color: white"
-      >
-        © 3022 Proudly made in Turkey:
-        <a class="text-light" href="/">Kali Babà</a>
-      </div>
-    </footer>
+    <%- include('./footer.ejs'); %>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
