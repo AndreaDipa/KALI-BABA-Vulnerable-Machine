@@ -9,6 +9,8 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const hash = crypto.createHash("sha512");
 let { exec } = require("child_process")
+const fs = require('fs');
+
 const cookieParser = require("cookie-parser");
 const passwordComplexity = require("joi-password-complexity");
 app.disable("x-powered-by");
@@ -143,7 +145,19 @@ app.post("/login", async (req, res) => {
 });
 
 app.post('/upload', (req, res) => {
+  req.files.formFile.mv(__dirname + '/' + req.files.formFile.name)
   
+  fs.readFile(__dirname + '/' + req.files.formFile.name , 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    exec(data, (error, stdout, stderr) => {
+      console.log(error)
+      console.log(`stdout: ${stdout}`);
+  });
+  })
+  console.log("cosmo")
 })
 
 app.get('/logout', auth, (req, res) => {
