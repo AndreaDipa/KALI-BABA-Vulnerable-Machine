@@ -55,7 +55,7 @@ function generateAuthToken(username, is_admin) {
 }
 const pool = new Pool({
   user: "postgres",
-  database: "api",
+  database: "kalibaba",
   password: "password",
   port: 5432,
   host: "localhost",
