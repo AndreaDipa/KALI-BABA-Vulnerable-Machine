@@ -23,7 +23,7 @@ h1 {
   color: red;
 }
 
-a{
+a {
   color: #cc241d;
 }
 
@@ -216,7 +216,8 @@ button:focus {
   font-size: 0.9rem;
 }
 
-.social-link:hover, .social-link:focus {
+.social-link:hover,
+.social-link:focus {
   background: #fbf1c7;
   text-decoration: none;
   color: #282828;
@@ -233,3 +234,4 @@ button:focus {
   background-color: #fbf1c7;
   color: #282828;
 }
+
