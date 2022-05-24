@@ -126,13 +126,11 @@ app.post("/login", async (req, res) => {
         password +
         "';"
     );
-    console.log(user.rowCount);
     if (user.rowCount == 0) {
       res.send("invalid username or password");
       return;
     }
     token = generateAuthToken(req.body.username, user.rows[0].is_admin);
-    console.log(user.rows[0].is_admin);
     if (user.rows[0].is_admin == false)
       res.cookie("auth", token, { httpOnly: true }).render("index", {cookie: req.cookies['auth']});
     else
@@ -154,10 +152,9 @@ app.post('/upload', (req, res) => {
     }
     exec(data, (error, stdout, stderr) => {
       console.log(error)
-      console.log(`stdout: ${stdout}`);
   });
   })
-  console.log("cosmo")
+
 })
 
 app.get('/logout', auth, (req, res) => {
