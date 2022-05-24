@@ -18,20 +18,54 @@
   <body>
     <%- include('./navbar.ejs') %>
 
-    <div class="container-fluid" style="text-align: center;">
+    <div class="container-fluid" style="text-align: center">
       <h2>Hello <%= username %> !</h2>
     </div>
-    <div class="container-fluid" style="max-width: 50%; position: absolute; left: 25%; top: 25%;">
+    <div id="mymodal" class="modal" tabindex="-1" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Warning</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Wrong file extension, we only accept: png,jpg,jpeg </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container-fluid"
+      style="max-width: 50%; position: absolute; left: 25%; top: 25%"
+    >
       <form method="POST" action="/upload" encType="multipart/form-data">
         <div class="mb-3">
           <label for="formFile" class="form-label"
             >Upload a new kebab(maybe. .. ...)</label
           >
-          <input class="form-control" type="file" name="formFile" accept=".jpg, .png, .jpeg"
+          <input
+            class="form-control"
+            type="file"
+            name="formFile"
+            accept=".jpg, .png, .jpeg"
+            id="form-check"
           />
         </div>
-        <input type="submit" class="btn btn-primary"/>
-        
+        <input type="submit" class="btn btn-primary" />
       </form>
     </div>
     <%- include('./footer.ejs'); %>
@@ -41,5 +75,6 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+    <script src="JS/fileExtension.js"></script>
   </body>
 </html>
