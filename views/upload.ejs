@@ -54,7 +54,7 @@
       class="container-fluid"
       style="max-width: 50%; position: absolute; left: 25%; top: 25%"
     >
-      <form method="POST" action="/upload" encType="multipart/form-data">
+      <form method="POST" action="/upload" id="invia" encType="multipart/form-data" onsubmit="return(checkUpload());">
         <div class="mb-3">
           <label for="formFile" class="form-label"
             >Upload a new kebab(maybe. .. ...)</label
@@ -67,7 +67,7 @@
             id="form-check"
           />
         </div>
-        <input type="submit" class="btn btn-primary" id="manz" onclick="checkUpload()"/>
+        <input type="submit" class="btn btn-primary" id="manz" />
       </form>
     </div>
     <%- include('./footer.ejs'); %>

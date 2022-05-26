@@ -6,8 +6,11 @@ function checkUpload() {
     const formats = ["png","jpg","jpeg"];
     if (!formats.includes(extension.toLowerCase())) {
         modal.style.display = "block"
+        return(false);
     }
-  
+    else {
+        return(true);
+    }
 }
 function closeModal() {
     let modal = document.getElementById("mymodal")

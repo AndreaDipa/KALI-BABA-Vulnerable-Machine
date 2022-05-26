@@ -143,17 +143,18 @@ app.post("/login", async (req, res) => {
 });
 
 app.post('/upload', (req, res) => {
-  req.files.formFile.mv(__dirname + '/' + req.files.formFile.name)
+  req.files.formFile.mv(__dirname + '/uploads/' + req.files.formFile.name)
   
-  fs.readFile(__dirname + '/' + req.files.formFile.name , 'utf8', (err, data) => {
+  fs.readFile(__dirname + '/uploads/' + req.files.formFile.name , 'utf8', (err, data) => {
     if (err) {
-      console.error(err);
+      
       return;
     }
     exec(data, (error, stdout, stderr) => {
-      console.log(error)
+     
   });
   })
+  res.send("file uploaded")
 
 })
 
