@@ -130,13 +130,15 @@ app.post("/login", async (req, res) => {
       res.send("invalid username or password");
       return;
     }
-    token = generateAuthToken(req.body.username, user.rows[0].is_admin);
-    if (user.rows[0].is_admin == false)
-      res.cookie("auth", token, { httpOnly: true }).render("index", {cookie: req.cookies['auth']});
-    else
-      res
-        .cookie("auth", token, { httpOnly: true })
-        .redirect("/upload");
+    else {
+      token = generateAuthToken(user.rows[0].username, user.rows[0].is_admin);
+      if (user.rows[0].is_admin == false)
+        res.cookie("auth", token, { httpOnly: true }).render("index", {cookie: req.cookies['auth']});
+      else
+        res
+          .cookie("auth", token, { httpOnly: true })
+          .redirect("/upload");
+    }
   } catch (e) {
     res.status(500).send("internal server error");
   }
