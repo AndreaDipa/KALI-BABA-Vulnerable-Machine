@@ -16,6 +16,8 @@
   - [Sitemap](#sitemap)
 
  ## Paths
+ 
+ > :warning: DISCLAIMER: The following code only includes the web app part, if you are interested in having the '.ova' file of the complete virtual machine please contact one of the authors.
 
  ### Remote Access
 
@@ -35,12 +37,12 @@ The file [writeup.pdf](/writeup.pdf) within the repository contains a complete w
 
 ## Sitemap
 
-Index (Landing Page)
-Menu 
-Register 
-Login
-About us 
-Contact 
-Upload (Admin Only)
+- Index (Landing Page)
+- Menu 
+- Register 
+- Login
+- About us 
+- Contact 
+- Upload (Admin Only)
 
 ![index](/views/img/index.png)
