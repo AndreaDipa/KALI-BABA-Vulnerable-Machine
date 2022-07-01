@@ -1,54 +1,46 @@
- # KALI BABA' Vulnerable Application
+ # KALI BABA' Vulnerable Machine
+
+ ## Technologies
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
- Table of Contents:
-
+- [KALI BABA' Vulnerable Machine](#kali-baba-vulnerable-machine)
+  - [Technologies](#technologies)
   - [Paths](#paths)
-    - [Local User](#local-user)
-    - [Priv Esc](#priv-esc)
-  - [TO-DO](#to-do)
-    - [Importanti](#importanti)
+    - [Remote Access](#remote-access)
+    - [Local Access (Privilege Escalation)](#local-access-privilege-escalation)
+  - [Tutorial](#tutorial)
   - [Sitemap](#sitemap)
 
  ## Paths
 
- ### Local User
+ ### Remote Access
 
-- [ ] JWT
-  - [tutorial](https://www.section.io/engineering-education/how-to-build-authentication-api-with-jwt-token-in-nodejs/) 
-  - L'idea è quella di dare accesso attraverso un token ad una pagina di upload riservata ad utenti admin e caricare una reverse shell
-- [ ] EJS
-  - [tutorial](https://dev.to/boiledsteak/simple-remote-code-execution-on-ejs-web-applications-with-express-fileupload-3325) 
-  - L'idea è quella di usare una CVE relativa a EJS per accedere ad una pagina di upload riservata ad admin e caricare una resverse shell 
-- [ ] NoSQL o SQL 
-  - L'idea è quella di trovare le credenziali di admin attraverso injecion, decriptarle ed accedere alla pagina di upload 
+- Easy Path - SQLi 
+- Medium path - EJS (CVE-2020-7699)
+- Hard Path - JWT Token
 
- ### Priv Esc
+ ### Local Access (Privilege Escalation)
 
- - [ ] NFS
- - [ ] Docker
- - [ ] suid-sgid-capabilities/crontab/sudo -l
- - [ ] kernel-exploitation
+ - Easy path - Misconfigured Capabilities
+ - Medium path - Cronjob Wildcards
+ - Hard path - NFS Root Squash
 
-## TO-DO 
+## Tutorial
 
-### Importanti
-
-- [ ] Cancellare History dei comandi
-- [ ] cancellare .git
-- [ ] cancellare eventuali log
+The file [writeup.pdf](/writeup.pdf) within the repository contains a complete walkthrough for the exploit of all paths.
 
 ## Sitemap
 
 Index (Landing Page)
-Products/Menu (Lista Kebab)
+Menu 
 Register 
 Login
-About us (possibile enumeration nomi utenti)
-Contact (possibile bait)
-Upload (Admin Secret Page)
+About us 
+Contact 
+Upload (Admin Only)
 
-Occhio allo user che esegue pm2.
+![index](/views/img/index.png)
